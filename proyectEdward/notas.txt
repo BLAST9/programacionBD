@@ -1,0 +1,267 @@
+USE [bd_ger]
+GO
+/****** Object:  StoredProcedure [dbo].[Comentar]    Script Date: 3/7/2019 11:23:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Comentar] 
+	-- Add the parameters for the stored procedure here
+	@B int ,
+	@IdComentarios int,
+	@Nombres VARCHAR (50),
+	@Correo VARCHAR (80),
+	@Telefono VARCHAR (10),
+	@Mensaje VARCHAR (max)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	IF @B = 1
+		INSERT INTO Comentarios VALUES (@Nombres, @Correo, @Telefono, @Mensaje)
+
+	IF @B = 2
+		DELETE FROM Comentarios
+		WHERE Comentarios.idcomentarios = @IdComentarios
+
+	IF @B = 3
+		UPDATE Comentarios SET
+		nombres = @Nombres,
+		correo = @Correo,
+		telefono = @Telefono,
+		mensaje = @Mensaje
+		WHERE Comentarios.idcomentarios = @IdComentarios
+
+	IF @B = 4
+		SELECT * FROM Comentarios
+		WHERE Comentarios.nombres LIKE '%'+@Nombres+'%'
+
+	IF @B = 5
+		SELECT * FROM Comentarios
+END
+
+
+USE [bd_ger]
+GO
+/****** Object:  StoredProcedure [dbo].[Cuenta]    Script Date: 3/7/2019 11:23:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Cuenta]
+	-- Add the parameters for the stored procedure here
+	@B int ,
+	@IdCuentas int,
+	@Nombresuser VARCHAR (30),
+	@Clave VARCHAR (30),
+	@Rol VARCHAR (30),
+	@IdUsuario int
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	IF @B = 1
+		INSERT INTO Cuentas VALUES (@Nombresuser, @Clave, @Rol, @IdUsuario)
+
+	IF @B = 2
+		DELETE FROM Cuentas
+		WHERE Cuentas.idcuenta = @IdCuentas
+
+	IF @B = 3
+		UPDATE Cuentas SET
+		nombreuser = @Nombresuser,
+		clave = @Clave,
+		@Rol = @Rol
+		WHERE Cuentas.idcuenta = @IdCuentas
+
+	IF @B = 4
+		SELECT * FROM Cuentas
+		WHERE Cuentas.nombreuser LIKE '%'+@Nombresuser+'%' 
+
+	IF @B = 5
+		SELECT * FROM Cuentas
+		WHERE Cuentas.clave = @Clave
+
+	IF @B = 6
+		SELECT * FROM Cuentas
+
+	IF @B = 7
+		SELECT nombreuser, clave, rol, cedula, nombres, telefono
+		FROM Cuentas AS C INNER JOIN Usuarios AS U
+		ON C.idusuario = U.idusuario
+		WHERE C.nombreuser = @Nombresuser
+END
+
+
+USE [bd_ger]
+GO
+/****** Object:  StoredProcedure [dbo].[Recur]    Script Date: 3/7/2019 11:24:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Recur]
+	-- Add the parameters for the stored procedure here
+	@B int ,
+	@IdRecursos int,
+	@Nombres VARCHAR (50),
+	@Codigo VARCHAR (50),
+	@Descripcion VARCHAR (50)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	IF @B = 1
+		INSERT INTO Recursos VALUES (@Nombres, @Codigo, @Descripcion)
+
+	IF @B = 2
+		DELETE FROM Recursos
+		WHERE Recursos.idrecursois = @IdRecursos
+
+	IF @B = 3
+		UPDATE Recursos SET
+		nombrer = @Nombres,
+		Codigo = @Codigo,
+		@Descripcion = @Descripcion
+		WHERE Recursos.idrecursois = @IdRecursos
+
+	IF @B = 4
+		SELECT * FROM Recursos
+		WHERE Recursos.nombrer LIKE '%'+@Nombres+'%' 
+
+	IF @B = 5
+		SELECT * FROM Recursos
+		WHERE Recursos.idrecursois = @IdRecursos
+
+	IF @B = 6
+		SELECT * FROM Recursos
+END
+
+
+USE [bd_ger]
+GO
+/****** Object:  StoredProcedure [dbo].[Solicitudes]    Script Date: 3/7/2019 11:24:21 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Solicitudes]
+	-- Add the parameters for the stored procedure here
+	@B int ,
+	@IdSolicitud int,
+	@Aula VARCHAR (10),
+	@Nivel VARCHAR (4),
+	@FechaSolicitud DATETIME,
+	@Fechauso DATE,
+	@Horainicio TIME,
+	@Horafinal TIME,
+	@Carrera VARCHAR (MAX),
+	@Asignatura VARCHAR (MAX),
+	@Idcurso int,
+	@Idusuario int
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	IF @B = 1
+		INSERT INTO Solicitud VALUES (@Aula, @Nivel, @FechaSolicitud, @Fechauso, @Horainicio, @Horafinal, @Carrera, @Asignatura, @Idcurso, @Idusuario)
+
+	IF @B = 2
+		DELETE FROM Solicitud
+		WHERE Solicitud.idsolicitud = @IdSolicitud
+
+	IF @B = 3
+		UPDATE Solicitud SET
+		aula = @Aula,
+		nivel = @Nivel,
+		fechauso = @Fechauso,
+		horainicio = @Horainicio,
+		horafinal = @Horafinal,
+		asignatura = @Asignatura
+		WHERE Solicitud.idsolicitud = @IdSolicitud
+
+	IF @B = 4
+		SELECT * FROM Solicitud
+		WHERE Solicitud.aula LIKE '%'+@Aula+'%' 
+
+	IF @B = 5
+		SELECT * FROM Solicitud
+		WHERE Solicitud.nivel = @Nivel
+
+	IF @B = 6
+		SELECT * FROM Solicitud
+
+	IF @B = 7
+		SELECT U.nombres, U.apellidos, S.nivel, S.carrera, S.asignatura, S.fechasolicitud, S.horainicio, S.horafinal
+		FROM Solicitud as S INNER JOIN Usuarios AS U
+		ON S.idusuario = U.idusuario
+		WHERE S.carrera = @Carrera
+END
+
+USE [bd_ger]
+GO
+/****** Object:  StoredProcedure [dbo].[Usuario]    Script Date: 3/7/2019 11:24:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Usuario] 
+	-- Add the parameters for the stored procedure here
+	@B int ,
+	@IdUsuario int,
+	@Cedula VARCHAR (14),
+	@Nombres VARCHAR (50),
+	@Apellidos VARCHAR (50),
+	@Email VARCHAR (80),
+	@Telefono VARCHAR (10)
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	IF @B = 1
+		INSERT INTO Usuarios VALUES (@Cedula, @Nombres, @Apellidos, @Email, @Telefono)
+
+	IF @B = 2
+		DELETE FROM Usuarios
+		WHERE Usuarios.idusuario = @IdUsuario
+
+	IF @B = 3
+		UPDATE Usuarios SET
+		cedula = @Cedula,
+		nombres = @Nombres,
+		apellidos = @Apellidos,
+		email = @Email,
+		telefono = @Telefono
+		WHERE Usuarios.idusuario = @IdUsuario
+
+	IF @B = 4
+		SELECT * FROM Usuarios
+		WHERE Usuarios.nombres LIKE '%'+@Nombres+'%' OR Usuarios.nombres LIKE '%'+@Apellidos+'%'
+
+	IF @B = 5
+		SELECT * FROM Usuarios
+		WHERE Usuarios.idusuario = @IdUsuario
+
+	IF @B = 6
+		SELECT * FROM Usuarios
+END

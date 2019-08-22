@@ -1,0 +1,15 @@
+C:\Users\User\Music\proyectEdward\capaEntidades\bin\Debug\capaEntidades.dll
+C:\Users\User\Music\proyectEdward\capaEntidades\bin\Debug\capaEntidades.pdb
+C:\Users\User\Music\proyectEdward\capaEntidades\obj\Debug\capaEntidades.csprojAssemblyReference.cache
+C:\Users\User\Music\proyectEdward\capaEntidades\obj\Debug\capaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\User\Music\proyectEdward\capaEntidades\obj\Debug\capaEntidades.dll
+C:\Users\User\Music\proyectEdward\capaEntidades\obj\Debug\capaEntidades.pdb
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\bin\Debug\capaEntidades.dll
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\bin\Debug\capaEntidades.pdb
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\bin\Debug\System.Data.SqlClient.dll
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\obj\Debug\capaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\obj\Debug\capaEntidades.csproj.CopyComplete
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\obj\Debug\capaEntidades.dll
+C:\Users\User\Desktop\proyectoClase\proyectEdward\capaEntidades\obj\Debug\capaEntidades.pdb
